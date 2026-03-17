@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class $6_EncodeDecodeString {
+class Solution1 {
 
     public String encode(List<String> strs) {
         StringBuilder encoded = new StringBuilder("");
