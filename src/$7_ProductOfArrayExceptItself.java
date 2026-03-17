@@ -1,4 +1,4 @@
-class Solution1 {
+class $7_ProductOfArrayExceptItself1 {
     public int[] productExceptSelf(int[] nums) {
         int[] result = new int[nums.length];
         for(int i = 0;i < nums.length;i++)result[i] = 1;
@@ -12,7 +12,7 @@ class Solution1 {
         return result;
     }
 }
-class Solution2 {
+class $7_ProductOfArrayExceptItself2 {
     public int[] productExceptSelf(int[] nums) {
         int[] prefix = new int[nums.length];
         int[] suffix = new int[nums.length];
@@ -43,7 +43,7 @@ class Solution2 {
 }
 
 
-class Solution3 {
+class $7_ProductOfArrayExceptItself3 {
     public int[] productExceptSelf(int[] nums) {
         int[] result = new int[nums.length];
 
