@@ -1,9 +1,27 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-class Solution1 {
+/**
+ * Problem: Group Anagrams (Wait, this is in $5_ValidAnagram.java but solves grouping)
+ * 
+ * Given an array of strings strs, group the anagrams together. 
+ * 
+ * Example 1:
+ * Input: strs = ["eat","tea","tan","ate","nat","bat"]
+ * Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+ */
+
+class $5_ValidAnagramMain {
+    public static void main(String[] args) {
+        String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+        $5_ValidAnagram3 sol = new $5_ValidAnagram3();
+        System.out.println("Grouped Anagrams: " + sol.groupAnagrams(strs));
+    }
+}
+
+// Solution 1: Grouping by sorting each string (O(N * K log K))
+// Why changed: Sorting each string takes O(K log K). We can improve this to O(K) 
+// by using a frequency array.
+class $5_ValidAnagram1 {
     public List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String,ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
         for(int i = 0;i < strs.length;i++){
@@ -15,7 +33,10 @@ class Solution1 {
         return new ArrayList(map.values());
     }
 }
-class Solution2 {
+
+// Solution 2: Grouping by frequency array using index-based loop (O(N * K))
+// Why changed: Using a frequency array avoids sorting. This version uses traditional loops.
+class $5_ValidAnagram2 {
     public List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String, ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
 
@@ -29,18 +50,18 @@ class Solution2 {
         return new ArrayList(map.values());
     }
 }
-class Solution3 {
+
+// Solution 3: Grouping by frequency array with enhanced for-loop (O(N * K))
+// Why changed: Cleaner, more readable code using the enhanced for-loop.
+class $5_ValidAnagram3 {
     public List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String,ArrayList<String>> map = new HashMap<String,ArrayList<String>>();
 
         for(String s : strs){
-
             int freqArr[] = new int[26];
-
             for(char c : s.toCharArray()){
                 freqArr[c - 'a']++;
             }
-
             map.computeIfAbsent(Arrays.toString(freqArr), k -> new ArrayList<String>()).add(s);
         }
         return new ArrayList(map.values());
