@@ -2,6 +2,34 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.Arrays;
+
+/**
+ * Problem: Contains Duplicate
+ * 
+ * Example 1:
+ * Input: nums = [1, 2, 3, 1]
+ * Output: true
+ * Explanation: The number 1 appears twice.
+ * 
+ * Example 2:
+ * Input: nums = [1, 2, 3, 4]
+ * Output: false
+ * Explanation: All elements are distinct.
+ */
+
+class Main {
+    public static void main(String[] args) {
+        int[] testCase1 = {1, 2, 3, 1}; // Expected: true
+        int[] testCase2 = {1, 2, 3, 4}; // Expected: false
+        int[] testCase3 = {1, 1, 1, 3, 3, 4, 3, 2, 4, 2}; // Expected: true
+
+        Solution4 sol = new Solution4();
+        System.out.println("Test Case 1: " + sol.hasDuplicate(testCase1));
+        System.out.println("Test Case 2: " + sol.hasDuplicate(testCase2));
+        System.out.println("Test Case 3: " + sol.hasDuplicate(testCase3));
+    }
+}
 
 
 // Solution 1: Using TreeMap (O(log n)) to store counts.
