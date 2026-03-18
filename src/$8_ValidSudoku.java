@@ -1,6 +1,36 @@
-import java.util.HashSet;
-import java.util.LinkedHashMap;
+import java.util.*;
 
+/**
+ * Problem: Valid Sudoku
+ * 
+ * Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need 
+ * to be validated according to the following rules:
+ * 1. Each row must contain the digits 1-9 without repetition.
+ * 2. Each column must contain the digits 1-9 without repetition.
+ * 3. Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+ */
+
+class Main {
+    public static void main(String[] args) {
+        char[][] board = {
+            {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+            {'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+            {'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+            {'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+            {'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+            {'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+            {'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+            {'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+            {'.', '.', '.', '.', '8', '.', '.', '7', '9'}
+        };
+        $8_ValidSudoku5 sol = new $8_ValidSudoku5();
+        System.out.println("Is Valid: " + sol.isValidSudoku(board));
+    }
+}
+
+// Solution 1: Using LinkedHashMap in O(N^2)
+// Why changed: LinkedHashMap is overkill as we only need to check existence. 
+// The manual 3x3 check inside the loop is also complex.
 class $8_ValidSudoku1 {
     public boolean isValidSudoku(char[][] board) {
 
@@ -33,6 +63,10 @@ class $8_ValidSudoku1 {
 
     }
 }
+
+// Solution 2: Optimized to HashSet and cleaner loops.
+// Why changed: Replacing LinkedHashMap with HashSet improves efficiency. 
+// Still processes 3x3 boxes multiple times.
 class $8_ValidSudoku2 {
     public boolean isValidSudoku(char[][] board) {
 
@@ -120,6 +154,9 @@ class $8_ValidSudoku4 {
     }
 }
 
+// Solution 5: Array of HashSets O(N^2) time, O(N^2) space
+// Why changed: This is the most efficient and clean approach. It uses arrays of HashSets 
+// to track rows, columns, and boxes simultaneously in a single pass.
 class $8_ValidSudoku5 {
     public boolean isValidSudoku(char[][] board) {
         HashSet<Character>[] rows = new HashSet[9];

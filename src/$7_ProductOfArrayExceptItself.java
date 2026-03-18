@@ -1,3 +1,27 @@
+import java.util.Arrays;
+
+/**
+ * Problem: Product of Array Except Itself
+ * 
+ * Given an integer array nums, return an array answer such that answer[i] is equal 
+ * to the product of all the elements of nums except nums[i].
+ * 
+ * Example 1:
+ * Input: nums = [1,2,3,4]
+ * Output: [24,12,8,6]
+ */
+
+class $7_ProductOfArrayExceptItselfMain {
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4};
+        \ sol = new Solution3();
+        System.out.println("Result: " + Arrays.toString(sol.productExceptSelf(nums)));
+    }
+}
+
+// Solution 1: Brute Force O(N^2)
+// Why changed: This approach uses nested loops to calculate the product for each element, 
+// which is inefficient for large arrays.
 class $7_ProductOfArrayExceptItself1 {
     public int[] productExceptSelf(int[] nums) {
         int[] result = new int[nums.length];
@@ -26,24 +50,14 @@ class $7_ProductOfArrayExceptItself2 {
             suffix[j] = suffix[j+1] * nums[j];
             j--;
         }
-        for(int i = 0; i < nums.length;i++){
-            if(i == 0){
-                result[i] = suffix[i+1];
-            }
-            else if(i == nums.length-1){
-                result[i] = prefix[i-1];
-            }
-            else{
-                result[i] = prefix[i-1] * suffix[i+1];
-            }
-        }
-
         return result;
     }
 }
 
-
-class $7_ProductOfArrayExceptItself3 {
+// Solution 3: Space-Optimized Prefix/Suffix O(N) time, O(1) extra space
+// Why changed: This is the optimal solution. It stores prefix products in the result array 
+// and calculates suffix products on the fly, reducing extra space usage to O(1).
+class Solution3 {
     public int[] productExceptSelf(int[] nums) {
         int[] result = new int[nums.length];
 
@@ -57,8 +71,6 @@ class $7_ProductOfArrayExceptItself3 {
             result[j] = result[j] * right;
             right *= nums[j];
         }
-
         return result;
     }
 }
-
