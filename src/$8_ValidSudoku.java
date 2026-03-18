@@ -60,7 +60,6 @@ class $8_ValidSudoku1 {
             }
         }
         return true;
-
     }
 }
 
@@ -207,13 +206,8 @@ class $8_ValidSudoku6 {
                 if(val =='.'){
                     continue;
                 }
-                if(!rows[i].add(val) || !cols[j].add(val) || !box[i/3][j/3].add(val)) return false;
             }
         }
         return true;
-
     }
 }
-
-
-
