@@ -133,5 +133,27 @@ class $10_ValidPalindrome4 {
         return false;
     }
 }
+class $10_ValidPalindrome5 {
+    public boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        while(left < right){
+            while(left < right && !isAlphaNumeric(s.charAt(left))) left++;
+            while(left < right && !isAlphaNumeric(s.charAt(right))) right--;
+            if(toLower(s.charAt(left)) != toLower(s.charAt(right))) return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+    public char toLower(char c) {
+        if(c >= 'A' && c <= 'Z') c+=32;
+        return c;
+    }
+    public boolean isAlphaNumeric(char c){
+        if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) return true;
+        return false;
+    }
+}
 
 
