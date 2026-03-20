@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.TreeSet;
+import java.util.*;
 
 class $9_LongestConsecutiveSubsequence1 {
     public int longestConsecutive(int[] nums) {
@@ -44,4 +42,57 @@ class $9_LongestConsecutiveSubsequence2 {
         return maxCount+1;
     }
 }
+
+
+class $9_LongestConsecutiveSubsequence3 {
+    public int longestConsecutive(int[] nums) {
+        if(nums.length == 0) return 0;
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums){
+            set.add(num);
+        }
+
+
+        int maxCount = 0;
+        for(int i = 0; i < nums.length;i++){
+            if(!set.contains(nums[i]-1)){
+                int count = 1;
+                int current = nums[i];
+                while(set.contains(current + 1)){
+                    current++;
+                    count++;
+                }
+                maxCount = maxCount > count ? maxCount : count;
+            }
+        }
+        return maxCount;
+    }
+}
+
+class $9_LongestConsecutiveSubsequence4 {
+    public int longestConsecutive(int[] nums) {
+        if(nums.length == 0) return 0;
+        Set<Integer> set = new HashSet<Integer>();
+        for(int num : nums){
+            set.add(num);
+        }
+
+
+        int maxCount = 0;
+        for(int num : nums){
+            if(!set.contains(num-1)){
+                int count = 1;
+                int current = num;
+                while(set.contains(current + 1)){
+                    current++;
+                    count++;
+                }
+                maxCount = maxCount > count ? maxCount : count;
+            }
+        }
+        return maxCount;
+    }
+}
+
+
 
