@@ -22,7 +22,6 @@ class $11_TwoIntegerSumII2 {
     public int[] twoSum(int[] numbers, int target) {
         int low = 0;
         int high = numbers.length-1;
-        int[] arr = new int[2];
 
 
         while(low <= high){
